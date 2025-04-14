@@ -1,0 +1,195 @@
+*{
+    padding:0;
+    margin:0;
+    border:0;
+    box-sizing: border-box;
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+    background-color: #e2dcc7;
+    height:fit-content;
+}
+
+#predefined{
+  display: flex;
+  height:100vh;
+  width: 100%;
+}
+
+#problem{
+ display:flex;
+ flex-direction: column;
+ padding:20px;
+ justify-content: center;
+ align-items: center;
+ width:50%;
+ height:100%:
+}
+
+#heading{
+display: flex;
+width:100%;
+background-color: #76654c;
+color: white;
+justify-content: center;
+align-items: center;
+height:20%;
+margin-bottom:20px;
+border-radius:25px;
+font-size:2rem;
+font-family: "Anton", sans-serif;
+border: 2px ridge white;
+box-shadow: 0px 0px 10px 10px rgba(0, 0, 0, 0.059);
+
+}
+
+#statement{
+display: flex;
+justify-content: center;
+
+width:100%;
+background-color: white;
+height:calc(80% - 20px);
+border-radius:25px;
+border: 2px ridge rgba(242, 242, 242, 0.559);
+box-shadow: 0px 0px 10px 10px rgba(0, 0, 0, 0.059);
+padding:15px;
+font-size:1.2rem;
+font-family: "Special Gothic", sans-serif;
+overflow-y: auto;
+overflow-x: hidden;
+}
+
+#simulationSection{
+ display:flex;
+ padding:20px;
+ align-items: center;
+ width:50%;
+ height:100%:
+ 
+}
+
+#simulationWindow{
+    border: 2px ridge white;
+    box-shadow: 0px 0px 10px 10px rgba(0, 0, 0, 0.059);
+    flex: 1;
+    height:100%;
+    overflow: hidden;
+    border-radius: 25px;
+}
+
+#custom{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height:fit-content;
+}
+
+#customHeading{
+margin-top: 40px;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+#customHeading p{
+text-align: center;
+color: #545454;
+font-size:2rem;
+font-family: "Anton", sans-serif;
+width:50%;
+}
+
+.line{
+    height: 2px;
+    width:calc(25% - 40px);
+    background-color: #545454;
+}
+
+
+#customProblem {
+  background-color: #e2dcc7;
+  color: #545454;
+  padding: 2rem;
+  border-radius: 12px;
+  font-family: sans-serif;
+}
+
+#customProblem h1 {
+  color: #76654c;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+#customProblem form label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+#customProblem input[type="number"] {
+  padding: 6px;
+  margin-left: 5px;
+  border: 1px solid #76654c;
+  border-radius: 4px;
+}
+
+#customProblem button {
+  background-color: #76654c;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+#customProblem button:hover {
+  background-color: #545454;
+}
+
+#itemInputs {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+#knapsackBar {
+  width: 100%;
+  max-width: 800px;
+  height: 60px;
+  border: 2px solid #545454;
+  background-color: #e2dcc7;
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  margin: 1rem auto;
+}
+
+.knapsack-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #76654c;
+  color: rgb(0, 0, 0);
+  font-size: 0.75rem;
+  text-align: center;
+  height: 100%;
+  box-sizing: border-box;
+  border-right: 1px solid white;
+  padding: 0 4px;
+  white-space: nowrap;
+}
+
+
+
+#log {
+  margin-top: 2rem;
+  background-color: white;
+  padding: 1rem;
+  border-radius: 8px;
+  border-left: 5px solid #76654c;
+  font-size: 0.95rem;
+  white-space: pre-wrap;
+}

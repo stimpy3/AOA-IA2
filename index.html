@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="ia.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Special+Gothic&display=swap" rel="stylesheet">
+  <title>Greedy - Fractional Knapsack</title>
+</head>
+<body>
+  <main>
+  <section id="predefined">
+  <section id="problem">
+    <div id="heading">
+         Fractional Knapsack
+    </div>
+    <div id="statement">
+      <p>
+      You are given a knapsack with a maximum capacity of 200 units and a list of 4 items, each with an associated profit and weight:
+      <br>• Item 1 — Profit: 12, Weight: 70
+      <br>• Item 2 — Profit: 4, Weight: 30
+      <br>• Item 3 — Profit: 7, Weight: 50
+      <br>• Item 4 — Profit: 20, Weight: 90<br><br>
+      Algorithm Steps<br>
+1. For each item, compute ratio = profit / weight<br>
+2. Sort all items in descending order of this ratio<br>
+3. Initialize totalProfit = 0, remainingCapacity = W<br>
+4. For each item in sorted order:<br>
+ &nbsp;&nbsp;a. If item's weight ≤ remainingCapacity:<br>
+ &nbsp;&nbsp;&nbsp;&nbsp;-Take the whole item.<br>
+ &nbsp;&nbsp;&nbsp;&nbsp;-Add its full profit to totalProfit.<br>
+ &nbsp;&nbsp;&nbsp;&nbsp;-Subtract its weight from remainingCapacity.<br>
+ &nbsp;&nbsp;b. Else:<br>
+ &nbsp;&nbsp;&nbsp;&nbsp;-Take fraction = remainingCapacity / item's weight<br>
+ &nbsp;&nbsp;&nbsp;&nbsp;-Add fraction x profit to totalProfit.<br>
+ &nbsp;&nbsp;&nbsp;&nbsp;-Knapsack is now full. Break.<br>
+5. Return totalProfit. 
+</p>
+    </div>
+  </section>
+  <section id="simulationSection">
+    <div id="simulationWindow">
+    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.82/build/spline-viewer.js"></script>
+    <spline-viewer url="https://prod.spline.design/oWzmUP07LwNFbJMw/scene.splinecode"></spline-viewer>   
+    </div>
+  </section>
+  </section>
+
+  <section id="custom">
+    <div id="customHeading">
+      <div class="line"></div><p>Now Let's try with custom problem statement</p><div class="line"></div>
+    </div>
+  </section>
+
+  <section id="customProblem">
+    <h1>Fractional Knapsack Simulation</h1>
+  
+    <form id="inputForm">
+      <label>Number of items: <input type="number" id="numItems" required></label><br>
+      <label>Knapsack Capacity: <input type="number" id="capacity" required></label><br>
+      <button type="submit">Next</button>
+    </form>
+  
+    <div id="itemInputs"></div>
+    <button id="startBtn" style="display:none;">Start Simulation</button>
+  
+    <div id="knapsack">
+      <h2>Knapsack</h2>
+      <div id="knapsackBar"></div>
+    </div>
+  
+    <div id="log"></div>
+  </section>
+
+</main>
+</body>
+<script src="ia.js"></script>
+</html>
