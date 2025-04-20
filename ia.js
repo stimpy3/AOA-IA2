@@ -44,39 +44,47 @@ startBtn.onclick = function () {
 };
 
 function fillKnapsack() {
-    let remaining = capacity;
-    let totalValue = 0;
-  
-    const colors = ["#7a674e", "#e2dcc7", "#545454"];
-    let colorIndex = 0;
-  
-    for (let item of items) {
-      if (remaining <= 0) break;
-  
-      const takeWeight = Math.min(item.weight, remaining);
-      const fraction = takeWeight / item.weight;
-      const valueTaken = item.profit * fraction;
-      totalValue += valueTaken;
-      remaining -= takeWeight;
-  
-      const div = document.createElement("div");
-      div.className = "knapsack-item";
-      div.style.width = `${(takeWeight / capacity) * 100}%`;
-      div.style.background = colors[colorIndex % colors.length];
-      div.style.color = "black";
-      div.innerText = `Item ${item.id} (${Math.round(fraction * 100)}%)`;
-      knapsackBar.appendChild(div);
-  
-      log.innerHTML += `Item ${item.id}: Took ${takeWeight} of ${item.weight}, value = ${valueTaken.toFixed(2)}<br>`;
-      colorIndex++;
-    }
-  
-    log.innerHTML += `<br><strong>Total value: ${totalValue.toFixed(2)}</strong>`;
+  let remaining = capacity;
+  let totalValue = 0;
+  const takenItems = [];
+
+  const colors = ["#76654c", "#8f8153", "#8e8e8e"];
+  let colorIndex = 0;
+
+  // Step 1: Take items greedily
+  for (let item of items) {
+    if (remaining <= 0) break;
+
+    const takeWeight = Math.min(item.weight, remaining);
+    const fraction = takeWeight / item.weight;
+    const valueTaken = item.profit * fraction;
+    totalValue += valueTaken;
+    remaining -= takeWeight;
+
+    takenItems.push({ ...item, takeWeight });
+
+    log.innerHTML += `Item ${item.id}: Took ${takeWeight} of ${item.weight}, value = ${valueTaken.toFixed(2)}<br>`;
   }
 
-// Return a random color from the theme (excluding white to ensure readability)
-function getRandomThemeColor() {
-  const colors = ["#76654c", "#545454", "#e2dcc7"];
-  return colors[Math.floor(Math.random() * colors.length)];
-}
+  // Step 2: Normalize bar widths based on relative taken amounts
+  const totalTakenWeight = takenItems.reduce((sum, item) => sum + item.takeWeight, 0);
 
+  knapsackBar.innerHTML = "";
+  for (let item of takenItems) {
+    const barWidthPercent = (item.takeWeight / totalTakenWeight) * 100;
+
+    const div = document.createElement("div");
+    div.className = "knapsack-item";
+    div.style.width = `${barWidthPercent}%`;
+    div.style.backgroundColor = colors[colorIndex % colors.length];
+    div.style.color = "black";
+    div.style.textAlign = "center";
+    div.style.padding = "4px 0";
+    div.innerText = `Item ${item.id}`;
+    knapsackBar.appendChild(div);
+
+    colorIndex++;
+  }
+
+  log.innerHTML += `<br><strong>Total value: ${totalValue.toFixed(2)}</strong>`;
+}
